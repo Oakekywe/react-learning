@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { v4 as uuid } from "uuid";
+import { useNavigate } from "react-router-dom";
 
 class AddPost extends Component {
   state = {
@@ -9,10 +10,16 @@ class AddPost extends Component {
 
   addUser = (e) => {
     e.preventDefault();
-    this.props.addNewPost({id: uuid(), ...this.state});
+    this.props.addNewPost({ id: uuid(), ...this.state });
+    this.setState({
+      title: "",
+      desc: "",
+    });
+    this.props.navigate("/");
   };
 
   render() {
+    const { navigate } = this.props;
     return (
       <div className="card bg-dark py-4 px-5">
         <form onSubmit={this.addUser}>
@@ -53,4 +60,7 @@ class AddPost extends Component {
   }
 }
 
-export default AddPost;
+export default (props) => {
+  const navigator = useNavigate();
+  return <AddPost {...props} navigate={navigator} />;
+};
