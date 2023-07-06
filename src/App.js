@@ -3,26 +3,30 @@ import Post from "./components/Post";
 import AddPost from "./components/AddPost";
 
 function App() {
-  let [posts, setPosts] = useState([
-    {
-      id: 1,
-      title: "Post title 1",
-      desc: "post desc 1",
-    },
-    {
-      id: 2,
-      title: "Post title 2",
-      desc: "post desc 2",
-    },
-  ]);
+  const DB_NAME = "PostDB";
+  let [posts, setPosts] = useState([]);
 
   const addNewPost = (post) => {
     setPosts([post, ...posts]);
   };
+
+  const deletePostHandler = (id) => {
+    setPosts(posts.filter((post) => post.id != id));
+  };
+
+  useEffect(() => {
+    let data = localStorage.getItem(DB_NAME);
+    if (data) setPosts(JSON.parse(data));
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem(DB_NAME, JSON.stringify(posts));
+  }, [posts]);
+
   return (
     <div className="container">
       <h1 className="text-center text-info my-3">Posts</h1>
-      <Post posts={posts} />
+      <Post posts={posts} deletePost={deletePostHandler} />
       <AddPost addNewPost={addNewPost} />
     </div>
   );
