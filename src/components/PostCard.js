@@ -24,10 +24,11 @@ class PostCard extends Component {
                 <i className="fa fa-eye"> </i>
               </button>
             </Link>
-
-            <button className="btn btn-warning btn-sm mt-3 me-2">
-              <i className="fa fa-edit"> </i>
-            </button>
+            <Link to={`/post/edit/${post.id}`} state={{ post: post }}>
+              <button className="btn btn-warning btn-sm mt-3 me-2">
+                <i className="fa fa-edit"> </i>
+              </button>
+            </Link>
             <button
               className="btn btn-danger btn-sm mt-3"
               onClick={this.deletePost.bind(this)}
