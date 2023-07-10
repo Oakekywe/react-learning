@@ -3,10 +3,10 @@ import { ThemeProvider } from "styled-components";
 import { GlobalCSS } from "./styles/GlobalCSS";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Container } from "./styles/Share";
-import Nav from "./components/Nav";
+import Home from "./components/Home";
 
 const theme = {
-  color: {
+  colors: {
     primary: "aliceblue",
   },
 };
@@ -18,7 +18,7 @@ function App() {
       <Container>
         <Router>
           <Routes>
-            <Route path="/" element={ <Nav />}></Route>
+            <Route path="/" element={ <Home />}></Route>
           </Routes>
         </Router>
       </Container>
