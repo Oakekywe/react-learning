@@ -4,6 +4,7 @@ import adsImage from "../images/ads.png";
 import adsImage2 from "../images/ads2.png";
 import adsImage3 from "../images/ads3.png";
 import styled from "styled-components";
+import { Button } from "../styles/Share";
 
 const FlexDiv = styled.div`
   display: flex;
@@ -19,19 +20,6 @@ const Flex = styled.div`
   padding: 20px;
   align-items: center;
   justify-content: center;
-`;
-
-const Button = styled.button`
-  background-color: hotpink;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 3px;
-  margin-top: 20px;
-
-  &:hover {
-    background-color: indigo;
-  }
 `;
 
 export default function Home() {

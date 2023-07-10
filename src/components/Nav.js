@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 import logoImage from "../images/logo.png";
+import { useLoginContext } from "../store/LoginContentApi";
+import { useNavigate } from "react-router-dom";
 
 const FlexDiv = styled.div`
   display: flex;
@@ -45,12 +47,20 @@ const LiDiv = styled.li`
     transition: 300ms;
   }
   &:hover {
-    &:after{
+    &:after {
       transform: scaleX(1);
     }
   }
 `;
 export default function Nav() {
+  const navigate = useNavigate();
+  const { loggedIn, setLoggedIn } = useLoginContext();
+
+  const logout = () => {
+    setLoggedIn(false);
+    navigate("/");
+  };
+
   return (
     <FlexDiv>
       <LeftDiv>
@@ -65,8 +75,8 @@ export default function Nav() {
             </a>
           </LiDiv>
           <LiDiv>
-            <a href="#" style={ATage_style}>
-              Logout
+            <a href="#" onClick={logout} style={ATage_style}>
+              {loggedIn ? "Logout" : "Login"}
             </a>
           </LiDiv>
         </UlDiv>
