@@ -4,7 +4,7 @@ const accountReducer = (state = 0, action) => {
       return state + action.payload;
     case "remove":
       return state - action.payload;
-    case "default":
+    default:
       return state;
   }
 };
