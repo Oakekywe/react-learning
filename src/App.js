@@ -1,6 +1,6 @@
 import { useSelector, useDispatch } from "react-redux";
 import { bindActionCreators } from "redux";
-import { actionCreators } from "./stores/actionCreators";
+import actionCreators from "./stores/actions";
 
 function App() {
   const logged = useSelector((state) => state.loggedIn);

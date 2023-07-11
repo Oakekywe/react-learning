@@ -1,3 +1,4 @@
+
 export const login = (condition) => {
   return (dispatch) => {
     dispatch({
@@ -14,3 +15,10 @@ export const logout = (condition) => {
     });
   };
 };
+
+const actionCreators = {
+  login,
+  logout,
+};
+
+export default actionCreators;
